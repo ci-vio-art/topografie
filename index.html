@@ -31,6 +31,25 @@
             max-width: 600px;
         }
 
+        .circle {
+            border-radius: 70%;
+        }
+
+        .triangle {
+            fill: black;
+            stroke-width:5;
+        }
+
+        .caption {
+            margin: auto;
+            font-family: "Arial", sans-serif;
+            font-style: italic;
+            padding-top: 10px;
+            padding-left: 70px;
+            width: 500px;
+            color: black;
+        }
+
         .close {
             color: #aaa;
             float: right;
@@ -89,12 +108,20 @@
             background-color: #0044cc;
         }
 
-        .dot {
+        .mark {
             position: absolute;
             width: 6px;
             height: 6px;
-            border-radius: 70%;
-            background-color: blue;
+        }
+
+        .mark.triangle {
+            width: 10px;
+            height: 10px;
+        }
+
+        .mark.star {
+            width: 20px;
+            height: 20px;
         }
 
         .box {
@@ -282,7 +309,77 @@
                 X: 573,
                 Y: 690,
                 Type: "City"
-            }
+            },
+            {
+                RandomId: GetRandomId(),
+                Name: "Waal",
+                X: 640,
+                Y: 706,
+                Type: "Water"
+            },
+            {
+                RandomId: GetRandomId(),
+                Name: "Haringvliet",
+                X: 190,
+                Y: 703,
+                Type: "Water"
+            },
+            {
+                RandomId: GetRandomId(),
+                Name: "Hollands Diep",
+                X: 358,
+                Y: 790,
+                Type: "Water"
+            },
+            {
+                RandomId: GetRandomId(),
+                Name: "Nieuwe Maas",
+                X: 332,
+                Y: 634,
+                Type: "Water"
+            },
+            {
+                RandomId: GetRandomId(),
+                Name: "Westland",
+                X: 252,
+                Y: 554,
+                Type: "Area"
+            },
+            {
+                RandomId: GetRandomId(),
+                Name: "Noord-Holland",
+                X: 485,
+                Y: 312,
+                Type: "Province"
+            },
+            {
+                RandomId: GetRandomId(),
+                Name: "Utrecht",
+                X: 600,
+                Y: 500,
+                Type: "Province"
+            },
+            {
+                RandomId: GetRandomId(),
+                Name: "Gelderland",
+                X: 650,
+                Y: 670,
+                Type: "Province"
+            },
+            {
+                RandomId: GetRandomId(),
+                Name: "Noord-Brabant",
+                X: 480,
+                Y: 850,
+                Type: "Province"
+            },
+            {
+                RandomId: GetRandomId(),
+                Name: "Zeeland",
+                X: 125,
+                Y: 810,
+                Type: "Province"
+            },
         ]
 
         async function showCorrect() {
@@ -328,7 +425,7 @@
                 if (input.toLowerCase() == currentLocation.Name.toLowerCase()) {
                     showCorrect();
                     incorrectCount = 0;
-                    
+
                     selectedItem.addClass("correct");
                     selectedItem.removeClass("selected");
                     $("#tip").hide();
@@ -349,6 +446,7 @@
                         }
                         else {
                             $("#tip").hide();
+                            incorrectLocations.push(currentLocation);
                         }
 
                         switch (incorrectCount) {
@@ -432,10 +530,26 @@
             let count = 0;
 
             locations.forEach(location => {
-                let svgNode = '<svg class="dot" style="left:' + location.X + 'px; top:' + location.Y +
-                    'px;" viewBox="0 0 10 10"><circle id="location-' + count + '" data-random-id="' + location.RandomId + '" cx="5" cy="5" r="10" fill="black" /></svg>';
+                let svgNode = '';
 
-                console.log(svgNode);
+                switch (location.Type.toLowerCase()) {
+                    case "city":
+                        svgNode = '<svg class="mark circle" style="left:' + location.X + 'px; top:' + location.Y +
+                            'px;"><circle id="location-' + count + '" data-random-id="' + location.RandomId + '" cx="5" cy="5" r="10" fill="black" /></svg>';
+                        break;
+                    case "water":
+                        svgNode = '<svg class="mark rectangle" width="10" height="10" style="left:' + location.X + 'px; top:' + location.Y +
+                            'px;"><rect x="0" y="0" width="10" height="10" id="location-' + count + '" data-random-id="' + location.RandomId + '" fill="black" /></svg>';
+                        break;
+                    case "area":
+                        svgNode = '<svg class="mark triangle" width="20" height="20" viewBox="0 0 20 20" style="left:' + location.X + 'px; top:' + location.Y +
+                            'px;"><polygon points="0,20 20,20 10,0" id="location-' + count + '" data-random-id="' + location.RandomId + '" /></svg>';
+                        break;
+                    case "province":
+                        svgNode = '<svg class="mark star" width="120" height="120" viewBox="0 0 120 120" style="left:' + location.X + 'px; top:' + location.Y +
+                            'px;"><polygon points="60,0 75,45 120,45 85,75 96,120 60,90 24,120 35,75 0,45 45,45" id="location-' + count + '" data-random-id="' + location.RandomId + '" /></svg>';
+                        break;
+                }
 
                 $("#map").append(svgNode);
 
@@ -497,6 +611,9 @@
         <p class="nice-text">Tip: het lijkt erop dat je een spellingsfout hebt gemaakt.</p>
     </div>
     <div id="map">
+        <div class="caption">
+            <p>• = Steden | □ = Wateren | △ = Gebieden | ★ = Provincies</p>
+        </div>
     </div>
 
     <div id="modal" class="modal">
