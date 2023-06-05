@@ -13,13 +13,13 @@
             background-position: center;
             background-size: cover;
         }
-        
+
         h2 {
             text-align: center;
             font-size: 30px;
             padding-left: 30px;
         }
-        
+
         #inputbox {
             z-index: 999;
             position: -webkit-sticky;
@@ -646,18 +646,20 @@
         <div class="input-title">
             <p>TOPOGRAFIE GROEP 6</p>
         </div>
-        <div class="box input" id="inputbox">
-            <input id="input" type="text" placeholder="Locatie (3 pogingen over)" />
-            <button class="button" onclick="checkInput()">Check</button>
-        </div>
-        <div id="correct" class="box big">
-            <p class="nice-text correct">Juist 😀</p>
-        </div>
-        <div id="incorrect" class="box big">
-            <p class="nice-text incorrect">Onjuist ☹️</p>
-        </div>
-        <div id="tip" class="box big">
-            <p class="nice-text">Tip: het lijkt erop dat je een spellingsfout hebt gemaakt.</p>
+        <div id="inputbox">
+            <div class="box input">
+                <input id="input" type="text" placeholder="Locatie (3 pogingen over)" />
+                <button class="button" onclick="checkInput()">Check</button>
+            </div>
+            <div id="correct" class="box big">
+                <p class="nice-text correct">Juist 😀</p>
+            </div>
+            <div id="incorrect" class="box big">
+                <p class="nice-text incorrect">Onjuist ☹️</p>
+            </div>
+            <div id="tip" class="box big">
+                <p class="nice-text">Tip: het lijkt erop dat je een spellingsfout hebt gemaakt.</p>
+            </div>
         </div>
         <div id="map" class="map">
             <div class="caption">
