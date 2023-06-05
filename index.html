@@ -600,7 +600,7 @@
 
             let modalText = (correct + partlyCorrect + incorrect)
 
-            if (incorrectLocations.length > 0) {
+            if ((incorrectLocations.length + partlyCorrectLocations.length) > 0) {
                 let tip = '<p class="nice-text">Wij raden aan onderstaande locaties nog even extra goed te leren.<ul class="nice-text">'
 
                 incorrectLocations.forEach(location => {
