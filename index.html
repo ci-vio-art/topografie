@@ -162,6 +162,11 @@
             fill: rgb(115, 255, 115);
         }
 
+        .correct-after-retry {
+            color: rgb(245, 118, 0);
+            fill: rgb(245, 118, 0);
+        }
+
         .incorrect {
             color: red;
             fill: red;
@@ -196,6 +201,7 @@
 
         var passedIndexes = []
         var incorrectLocations = []
+        var partlyCorrectLocations = []
         var incorrectCount = 0;
         var locations = [
             {
@@ -424,10 +430,19 @@
 
                 if (input.toLowerCase() == currentLocation.Name.toLowerCase()) {
                     showCorrect();
-                    incorrectCount = 0;
 
-                    selectedItem.addClass("correct");
+                    if(incorrectCount > 0)
+                    {
+                        selectedItem.addClass("correct-after-retry");
+                        partlyCorrectLocations.push(currentLocation);
+                    }
+                    else
+                    {
+                        selectedItem.addClass("correct");
+                    }
                     selectedItem.removeClass("selected");
+
+                    incorrectCount = 0;
                     $("#tip").hide();
                     $("input").attr("placeholder", "Locatie (3 pogingen over)")
                     $("input").val('');
@@ -446,7 +461,6 @@
                         }
                         else {
                             $("#tip").hide();
-                            incorrectLocations.push(currentLocation);
                         }
 
                         switch (incorrectCount) {
@@ -560,15 +574,20 @@
         }
 
         function finish() {
-            let correct = ('<div class="nice-text"><p class="correct">Goed: ' + (locations.length - incorrectLocations.length) + '</p>');
+            let correct = ('<div class="nice-text"><p class="correct">Goed: ' + (locations.length - incorrectLocations.length - partlyCorrectLocations.length) + '</p>');
+            let partlyCorrect = ('<p class="correct-after-retry">Goed na herkansing: ' + partlyCorrectLocations.length + '</p>');
             let incorrect = ('<p class="incorrect">Fout: ' + incorrectLocations.length + '</p></div>');
 
-            let modalText = (correct + incorrect)
+            let modalText = (correct + partlyCorrect + incorrect)
 
             if (incorrectLocations.length > 0) {
                 let tip = '<p class="nice-text">Wij raden aan onderstaande locaties nog even extra goed te leren.<ul class="nice-text">'
 
                 incorrectLocations.forEach(location => {
+                    tip += ("<li>" + location.Name + "</li>")
+                })
+                
+                partlyCorrectLocations.forEach(location => {
                     tip += ("<li>" + location.Name + "</li>")
                 })
 
