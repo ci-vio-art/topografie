@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        h2 {
+            text-align: center;
+            font-size: 30px;
+            padding-left: 30px;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            left: 0;
+            top: 0;
+            margin-top: -30px;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 600px;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .open-button {
+            background-color: #0066ff;
+            border: none;
+            color: #fff;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        body {
+            align-content: center;
+            align-items: center;
+            justify-content: center;
+            background-color: darkolivegreen;
+        }
+
+        .selected {
+            animation: colorChange 2s infinite;
+        }
+
+        #map {
+            margin: auto;
+            margin-bottom: 20px;
+            position: relative;
+            height: 1020px;
+            width: 740px;
+            background-image: url(topografie_zuid_holland_small.jpg);
+        }
+
+        .button {
+            margin-right: 20px;
+            font-size: 16px;
+            font-weight: bold;
+            text-align: center;
+            text-decoration: none;
+            background-color: lightseagreen;
+            color: whitesmoke;
+            border-radius: 4px;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .button:hover {
+            background-color: #0044cc;
+        }
+
+        .dot {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            border-radius: 70%;
+            background-color: blue;
+        }
+
+        .box {
+            margin: auto;
+            background-color: whitesmoke;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            width: 300px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .box.big {
+            width: 500px;
+            height: 80px;
+        }
+
+        .box input {
+            width: 100%;
+            height: 100%;
+            padding: 8px;
+            border: none;
+            font-size: 16px;
+            outline: none;
+            background-color: transparent;
+        }
+
+        .selected {
+            fill: rgb(0, 255, 213);
+        }
+
+        .correct {
+            color: rgb(25, 179, 25);
+            fill: rgb(115, 255, 115);
+        }
+
+        .incorrect {
+            color: red;
+            fill: red;
+        }
+
+        .nice-text {
+            font-family: "Arial", sans-serif;
+            font-size: 18px;
+            color: #333;
+            text-align: center;
+            margin: 50px;
+            line-height: 1.5;
+        }
+
+        @keyframes colorChange {
+            0% {
+                fill: gold;
+            }
+
+            50% {
+                fill: blue;
+            }
+
+            100% {
+                fill: pink;
+            }
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        function GetRandomId() { return Math.floor(Math.random() * 100000); }
+
+        var passedIndexes = []
+        var incorrectLocations = []
+        var incorrectCount = 0;
+        var locations = [
+            {
+                RandomId: GetRandomId(),
+                Name: "Noordwijk",
+                X: 332,
+                Y: 382,
+                Type: "City"
+            },
+            {
+                RandomId: GetRandomId(),
+                Name: "Wassenaar",
+                X: 316,
+                Y: 454.5,
+                Type: "City"
+            },
+            {
+                RandomId: GetRandomId(),
+                Name: "Leiden",
+                X: 357.5,
+                Y: 441,
+                Type: "City"
+            },
+            {
+                RandomId: GetRandomId(),
+                Name: "Scheveningen",
+                X: 259,
+                Y: 483.5,
+                Type: "City"
+            },
+            {
+                RandomId: GetRandomId(),
+                Name: "Den Haag",
+                X: 273.5,
+                Y: 500,
+                Type: "City"
+            },
+            {
+                RandomId: GetRandomId(),
+                Name: "Alphen aan den Rijn",
+                X: 433,
+                Y: 463,
+                Type: "City"
+            },
+            {
+                RandomId: GetRandomId(),
+                Name: "Delft",
+                X: 296.5,
+                Y: 550.5,
+                Type: "City"
+            },
+            {
+                RandomId: GetRandomId(),
+                Name: "Zoetermeer",
+                X: 352,
+                Y: 521,
+                Type: "City"
+            },
+            {
+                RandomId: GetRandomId(),
+                Name: "Gouda",
+                X: 456.5,
+                Y: 551.5,
+                Type: "City"
+            },
+            {
+                RandomId: GetRandomId(),
+                Name: "Hoek van Holland",
+                X: 192,
+                Y: 573,
+                Type: "City"
+            },
+            {
+                RandomId: GetRandomId(),
+                Name: "Vlaardingen",
+                X: 288,
+                Y: 627.5,
+                Type: "City"
+            },
+            {
+                RandomId: GetRandomId(),
+                Name: "Schiedam",
+                X: 313.5,
+                Y: 622.5,
+                Type: "City"
+            },
+            {
+                RandomId: GetRandomId(),
+                Name: "Rotterdam",
+                X: 352,
+                Y: 620,
+                Type: "City"
+            },
+            {
+                RandomId: GetRandomId(),
+                Name: "Spijkenisse",
+                X: 279,
+                Y: 674.5,
+                Type: "City"
+            },
+            {
+                RandomId: GetRandomId(),
+                Name: "Dordrecht",
+                X: 433.5,
+                Y: 708,
+                Type: "City"
+            },
+            {
+                RandomId: GetRandomId(),
+                Name: "Gorinchem",
+                X: 573,
+                Y: 690,
+                Type: "City"
+            }
+        ]
+
+        async function showCorrect() {
+            let promise = new Promise((res, rej) => {
+                setTimeout(() => res(true), 1000)
+            });
+
+            $("#correct").show();
+
+            let result = await promise;
+
+            $("#correct").hide();
+        }
+
+        async function showIncorrect() {
+            console.log("Test");
+            let promise = new Promise((res, rej) => {
+                setTimeout(() => res(true), 1000)
+            });
+
+            $("#incorrect").show();
+
+            let result = await promise;
+
+            $("#incorrect").hide();
+        }
+
+        function wait(ms) {
+            var start = new Date().getTime();
+            var end = start;
+            while (end < start + ms) {
+                end = new Date().getTime();
+            }
+        }
+
+        function checkInput() {
+            let input = $("#input").val();
+
+            if (input != '') {
+                let selectedItem = $(".selected");
+                let currentLocation = locations.find(location => location.RandomId == selectedItem.attr("data-random-id"));
+
+                if (input.toLowerCase() == currentLocation.Name.toLowerCase()) {
+                    showCorrect();
+
+                    selectedItem.addClass("correct");
+                    selectedItem.removeClass("selected");
+                    $("#tip").hide();
+                    $("input").attr("placeholder", "Locatie (3 pogingen over)")
+                    $("input").val('');
+                    markNewLocation();
+                }
+                else {
+                    showIncorrect();
+
+                    if (incorrectCount != 2) {
+                        incorrectCount++;
+
+                        spellingMistake = checkSpellingMistake(input, currentLocation.Name);
+
+                        if (spellingMistake) {
+                            $("#tip").show();
+                        }
+                        else {
+                            $("#tip").hide();
+                        }
+
+                        switch (incorrectCount) {
+                            case 1:
+                                $("input").attr("placeholder", "Locatie (2 pogingen over)")
+                                $("input").val('');
+                                break;
+                            case 2:
+                                $("input").attr("placeholder", "Locatie (1 poging over)")
+                                $("input").val('');
+                                break;
+                        }
+                    }
+                    else {
+                        incorrectCount = 0;
+                        $("input").attr("placeholder", "Locatie (3 pogingen over)")
+                        $("input").val('');
+                        selectedItem.addClass("incorrect");
+                        selectedItem.removeClass("selected");
+                        incorrectLocations.push(currentLocation);
+                        markNewLocation();
+                    }
+                }
+            }
+        }
+
+        function checkSpellingMistake(input, correct) {
+            let count = 0;
+
+            for (var i = 0; i < input.length; i++) {
+                if (input[i] != correct[i]) {
+                    count++;
+                }
+            }
+
+            if ((count / correct.length * 100) > 60) {
+                return false;
+            }
+            else {
+                return true;
+            }
+        }
+
+        function markNewLocation() {
+            var index = 0;
+
+            if (locations.length != passedIndexes.length) {
+                do {
+                    index = Math.floor(Math.random() * (locations.length));
+                }
+                while (passedIndexes.includes(index))
+
+                passedIndexes.push(index);
+
+                console.log(index);
+                console.log(passedIndexes);
+
+                let currentLocation = locations[index];
+                let locationSelector = '*[data-random-id="' + currentLocation.RandomId + '"]';
+                var selectElement = $(locationSelector);
+                selectElement.addClass("selected");
+            }
+            else {
+                finish();
+            }
+        }
+
+        function closeModal() {
+            $('.close, .modal').click(function (event) {
+                if ($(event.target).is('.modal, .close')) {
+                    $('#modal').fadeOut();
+                }
+            });
+        }
+
+        function setup() {
+            $("#tip").hide();
+            $("#correct").hide();
+            $("#incorrect").hide();
+
+            let count = 0;
+
+            locations.forEach(location => {
+                let svgNode = '<svg class="dot" style="left:' + location.X + 'px; top:' + location.Y +
+                    'px;" viewBox="0 0 10 10"><circle id="location-' + count + '" data-random-id="' + location.RandomId + '" cx="5" cy="5" r="10" fill="black" /></svg>';
+
+                console.log(svgNode);
+
+                $("#map").append(svgNode);
+
+                count++;
+            });
+
+            markNewLocation();
+        }
+
+        function finish() {
+            let correct = ('<div class="nice-text"><p class="correct">Goed: ' + (locations.length - incorrectLocations.length) + '</p>');
+            let incorrect = ('<p class="incorrect">Fout: ' + incorrectLocations.length + '</p></div>');
+
+            let modalText = (correct + incorrect)
+
+            if (incorrectLocations.length > 0) {
+                let tip = '<p class="nice-text">Wij raden aan onderstaande locaties nog even extra goed te leren.<ul class="nice-text">'
+
+                incorrectLocations.forEach(location => {
+                    tip += ("<li>" + location.Name + "</li>")
+                })
+
+                tip += "</ul></p>";
+
+                modalText += tip;
+            }
+
+            $(".modal-text").append(modalText);
+
+            $('#modal').fadeIn();
+        }
+
+        function restart() {
+            location.reload();
+        }
+
+        $(document).on('keypress', function (key) {
+            if (key.which == 13) {
+                checkInput();
+            }
+        });
+
+        window.onload = () => setup();
+    </script>
+</head>
+
+<body>
+    <div class="box">
+        <input id="input" type="text" placeholder="Locatie (3 pogingen over)" />
+        <button class="button" onclick="checkInput()">Check</button>
+    </div>
+    <div id="correct" class="box big">
+        <p class="nice-text correct">Juist 😀</p>
+    </div>
+    <div id="incorrect" class="box big">
+        <p class="nice-text incorrect">Onjuist ☹️</p>
+    </div>
+    <div id="map">
+    </div>
+    <div id="tip" class="box big">
+        <p class="nice-text">Tip: het lijkt erop dat je een spellingsfout hebt gemaakt.</p>
+    </div>
+
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="restart()"><button class="button">&times;</button></span>
+            <h2>Resultaat</h2>
+            <div class="modal-text"></div>
+        </div>
+    </div>
+</body>
+
+</html>
