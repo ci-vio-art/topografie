@@ -3,6 +3,42 @@
 
 <head>
     <style>
+        body {
+            align-content: center;
+            align-items: center;
+            justify-content: center;
+            background-color: black;
+            background-image: url(background.jfif);
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+        }
+
+        .input-title {
+            margin-top: 10px;
+            width: 100%;
+            color: whitesmoke;
+            background-color: rgba(0, 0, 0, 0.6);
+            font-family: Arial, Helvetica, sans-serif;
+            font-weight: lighter;
+            font-size: 30px;
+            text-align: center;
+            color: burlywood;
+        }
+
+        .container {
+            margin: auto;
+            width: 1000px;
+            margin-top: 5px;
+            border: solid;
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+
+        .map {
+            margin-right: 20px;
+        }
+
         h2 {
             text-align: center;
             font-size: 30px;
@@ -37,7 +73,7 @@
 
         .triangle {
             fill: black;
-            stroke-width:5;
+            stroke-width: 5;
         }
 
         .caption {
@@ -58,25 +94,6 @@
             cursor: pointer;
         }
 
-        .open-button {
-            background-color: #0066ff;
-            border: none;
-            color: #fff;
-            padding: 10px 20px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 16px;
-            cursor: pointer;
-        }
-
-        body {
-            align-content: center;
-            align-items: center;
-            justify-content: center;
-            background-color: darkolivegreen;
-        }
-
         .selected {
             animation: colorChange 2s infinite;
         }
@@ -88,6 +105,12 @@
             height: 1020px;
             width: 740px;
             background-image: url(topografie_zuid_holland_small.jpg);
+            background-size: auto;
+            border: solid;
+            border-color: rgb(39, 23, 3);
+            border-style: ridge;
+            border-width: 10px;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.6), 0 6px 20px 0 rgba(0, 0, 0, 0.4);
         }
 
         .button {
@@ -96,7 +119,7 @@
             font-weight: bold;
             text-align: center;
             text-decoration: none;
-            background-color: lightseagreen;
+            background-color: rgb(63, 36, 2);
             color: whitesmoke;
             border-radius: 4px;
             border: none;
@@ -105,7 +128,7 @@
         }
 
         .button:hover {
-            background-color: #0044cc;
+            background-color: darkgoldenrod;
         }
 
         .mark {
@@ -126,8 +149,8 @@
 
         .box {
             margin: auto;
+            margin-top: 5px;
             background-color: whitesmoke;
-            margin-top: 20px;
             margin-bottom: 20px;
             width: 300px;
             height: 40px;
@@ -135,7 +158,8 @@
             align-items: center;
             justify-content: center;
             border-radius: 5px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.6), 0 6px 20px 0 rgba(0, 0, 0, 0.4);
+
         }
 
         .box.big {
@@ -431,13 +455,11 @@
                 if (input.toLowerCase() == currentLocation.Name.toLowerCase()) {
                     showCorrect();
 
-                    if(incorrectCount > 0)
-                    {
+                    if (incorrectCount > 0) {
                         selectedItem.addClass("correct-after-retry");
                         partlyCorrectLocations.push(currentLocation);
                     }
-                    else
-                    {
+                    else {
                         selectedItem.addClass("correct");
                     }
                     selectedItem.removeClass("selected");
@@ -586,7 +608,7 @@
                 incorrectLocations.forEach(location => {
                     tip += ("<li>" + location.Name + "</li>")
                 })
-                
+
                 partlyCorrectLocations.forEach(location => {
                     tip += ("<li>" + location.Name + "</li>")
                 })
@@ -616,24 +638,30 @@
 </head>
 
 <body>
-    <div class="box">
-        <input id="input" type="text" placeholder="Locatie (3 pogingen over)" />
-        <button class="button" onclick="checkInput()">Check</button>
-    </div>
-    <div id="correct" class="box big">
-        <p class="nice-text correct">Juist 😀</p>
-    </div>
-    <div id="incorrect" class="box big">
-        <p class="nice-text incorrect">Onjuist ☹️</p>
-    </div>
-    <div id="tip" class="box big">
-        <p class="nice-text">Tip: het lijkt erop dat je een spellingsfout hebt gemaakt.</p>
-    </div>
-    <div id="map">
-        <div class="caption">
-            <p>• = Steden | □ = Wateren | △ = Gebieden | ★ = Provincies</p>
+    <div class="container">
+        <div class="input-title">
+            <p>TOPOGRAFIE GROEP 6</p>
+        </div>
+        <div class="box input">
+            <input id="input" type="text" placeholder="Locatie (3 pogingen over)" />
+            <button class="button" onclick="checkInput()">Check</button>
+        </div>
+        <div id="correct" class="box big">
+            <p class="nice-text correct">Juist 😀</p>
+        </div>
+        <div id="incorrect" class="box big">
+            <p class="nice-text incorrect">Onjuist ☹️</p>
+        </div>
+        <div id="tip" class="box big">
+            <p class="nice-text">Tip: het lijkt erop dat je een spellingsfout hebt gemaakt.</p>
+        </div>
+        <div id="map" class="map">
+            <div class="caption">
+                <p>• = Steden | □ = Wateren | △ = Gebieden | ★ = Provincies</p>
+            </div>
         </div>
     </div>
+
 
     <div id="modal" class="modal">
         <div class="modal-content">
