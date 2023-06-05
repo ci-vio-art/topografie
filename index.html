@@ -327,7 +327,8 @@
 
                 if (input.toLowerCase() == currentLocation.Name.toLowerCase()) {
                     showCorrect();
-
+                    incorrectCount = 0;
+                    
                     selectedItem.addClass("correct");
                     selectedItem.removeClass("selected");
                     $("#tip").hide();
