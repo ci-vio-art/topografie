@@ -13,6 +13,19 @@
             background-position: center;
             background-size: cover;
         }
+        
+        h2 {
+            text-align: center;
+            font-size: 30px;
+            padding-left: 30px;
+        }
+        
+        #inputbox {
+            z-index: 999;
+            position: -webkit-sticky;
+            position: sticky;
+            top: 40px;
+        }
 
         .input-title {
             width: 100%;
@@ -32,15 +45,8 @@
             background-color: rgba(255, 255, 255, 0.1);
         }
 
-
         .map {
             margin-right: 20px;
-        }
-
-        h2 {
-            text-align: center;
-            font-size: 30px;
-            padding-left: 30px;
         }
 
         .modal {
@@ -640,7 +646,7 @@
         <div class="input-title">
             <p>TOPOGRAFIE GROEP 6</p>
         </div>
-        <div class="box input">
+        <div class="box input" id="inputbox">
             <input id="input" type="text" placeholder="Locatie (3 pogingen over)" />
             <button class="button" onclick="checkInput()">Check</button>
         </div>
