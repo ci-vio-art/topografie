@@ -155,7 +155,7 @@ var locations = [
     },
     {
         RandomId: GetRandomId(),
-        Name: "Loodrechtse Plassen",
+        Name: "Loosdrechtse Plassen",
         X: 454,
         Y: 870,
         Type: "Water"
