@@ -231,7 +231,6 @@ async function showCorrect() {
 }
 
 async function showIncorrect() {
-    console.log("Test");
     let promise = new Promise((res, rej) => {
         setTimeout(() => res(true), 1000)
     });
@@ -393,8 +392,6 @@ function checkInputBox() {
 }
 
 function checkClicked(clicked) {
-    console.log('clicked')
-
     var dataRandomId = clicked.getAttribute("data-random-id");
 
     if (dataRandomId == null) {
@@ -458,7 +455,7 @@ function addLocation() {
 
         $("#map").append(node);
 
-        if(location.Capital == true)
+        if(location.Capital == true && getType() != 'write')
         {
             var capitalCity =     
             {
