@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Vondelschool - Topografie Noord-Holland</title>
+    <link rel="icon" type="image/x-icon" href="img/favicon.ico">
+    <link rel="stylesheet" href="css/styles.css" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="js/script.js"></script>
+</head>
+
+<body>
+    <div class="container" id="board">
+        <div class="input-title">
+            <p>TOPOGRAFIE GROEP 6</p>
+        </div>
+        <div id="answer-area">
+            <button class="button restart-button" onclick="restart()">↺</button>
+            <div id="inputbox" class="box input">
+                <input id="input" type="text" placeholder="Locatie"/>
+                <button class="button" onclick="checkInputBox()">Check</button>
+            </div>
+            <div id="guessLocationNameBox" class="box">
+                <p>Waar is <span class="locationName"></span>?</p>
+            </div>
+            <div id="showLocationNameBox">
+                <div class="box">
+                    <p>Dit is <span class="locationName"></span>.</p>
+                </div>
+                <div class="emptybox">
+                    <button class="btn btn-primary" onclick="nextLocation()">VOLGENDE</button>
+                </div>
+            </div>
+            <div class="box" id="tryCountBox">
+                <p id="tryCount"></p>
+            </div>
+            <div id="correct" class="box">
+                <p class="nice-text correct">Juist 😀</p>
+            </div>
+            <div id="incorrect" class="box">
+                <p class="nice-text incorrect">Onjuist ☹️</p>
+            </div>
+            <div id="tip" class="box big">
+                <p class="nice-text">Tip: het lijkt erop dat je een spellingsfout hebt gemaakt.</p>
+            </div>
+        </div>
+        <div id="map" class="map">
+            <div class="caption">
+                <p>• = Steden | ■ = Wateren | ▲ = Gebieden | ★ = Provincies | ⼮ = Rivieren/Kanalen | 🛧 = Vliegvelden</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="restart()"><button class="button">&times;</button></span>
+            <h2>Resultaat</h2>
+            <div class="modal-text"></div>
+        </div>
+    </div>
+
+    <div id="menu" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="menuLabel">MENU</h5>
+                <p id="menu-alert"></p>
+            </div>
+            <div class="modal-body">
+                <div>
+                    <div class="form-group">
+                        <label for="type">Type:</label>
+                        <select class="form-control" id="type">
+                            <option value="learn">Leren</option>
+                            <option value="click">Toets - Selecteren</option>
+                            <option value="write">Toets - Schrijven</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Onderdelen:</label>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="checkbox1" id="city" checked>
+                            <label class="form-check-label" for="checkbox1">
+                                Steden
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="checkbox3" id="area" checked>
+                            <label class="form-check-label" for="checkbox3">
+                                Gebieden
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="checkbox4" id="water" checked>
+                            <label class="form-check-label" for="checkbox4">
+                                Wateren
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="checkbox5" id="river" checked>
+                            <label class="form-check-label" for="checkbox5">
+                                Rivieren / Kanalen
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="checkbox6" id="province" checked>
+                            <label class="form-check-label" for="checkbox6">
+                                Provincies
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="checkbox7" id="airport" checked>
+                            <label class="form-check-label" for="checkbox7">
+                                Vliegvelden
+                            </label>
+                        </div>
+                    </div>
+                    <button class="btn btn-primary" onclick="setup()">START</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
