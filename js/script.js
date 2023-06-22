@@ -218,6 +218,11 @@ var locations = [
     }
 ]
 
+function isFinished()
+{
+    return locations.length == passedIndexes.length;
+}
+
 async function showCorrect() {
     let promise = new Promise((res, rej) => {
         setTimeout(() => res(true), 1000)
@@ -335,7 +340,7 @@ function checkSpellingMistake(input, correct) {
 function markNewLocation() {
     var index = 0;
 
-    if (locations.length != passedIndexes.length) {
+    if (!isFinished()) {
         do {
             index = Math.floor(Math.random() * (locations.length));
         }
@@ -353,12 +358,10 @@ function markNewLocation() {
             blackOutSelectedMarker();
         }
 
-        if(currentLocation.Type.toLowerCase() == "capital")
-        {
+        if (currentLocation.Type.toLowerCase() == "capital") {
             $(".locationName").text("de hoofdstad");
         }
-        else
-        {
+        else {
             $(".locationName").text(currentLocation.Name);
         }
     }
@@ -455,9 +458,8 @@ function addLocation() {
 
         $("#map").append(node);
 
-        if(location.Capital == true && getType() != 'write')
-        {
-            var capitalCity =     
+        if (location.Capital == true && getType() != 'write') {
+            var capitalCity =
             {
                 RandomId: GetRandomId(),
                 Name: location.Name,
@@ -469,7 +471,7 @@ function addLocation() {
             locations.push(capitalCity);
 
             node = '<svg class="mark circle capitalCity ' + onclickEvent + ' style="left:' + capitalCity.X + 'px; top:' + capitalCity.Y +
-                    'px;"><circle id="location-' + count + '-capital" data-random-id="' + capitalCity.RandomId + '" data-capital="true" cx="5" cy="5" r="10" fill="none"/></svg>';
+                'px;"><circle id="location-' + count + '-capital" data-random-id="' + capitalCity.RandomId + '" data-capital="true" cx="5" cy="5" r="10" fill="none"/></svg>';
 
             $("#map").append(node);
         }
@@ -579,16 +581,19 @@ function restart() {
 }
 
 $(document).on('keypress', function (key) {
-    if (key.which == 13)
+    if (key.which == 13) {
         var type = getType();
 
-    switch (type.toLowerCase()) {
-        case "learn":
-            nextLocation();
-            break;
-        case "write":
-            checkInputBox();
-            break;
+        switch (type.toLowerCase()) {
+            case "learn":
+                if (!isFinished()) {
+                    nextLocation();
+                }
+                break;
+            case "write":
+                checkInputBox();
+                break;
+        }
     }
 }
 );
