@@ -7,7 +7,7 @@ var incorrectCount = 0;
 var locations = [
     {
         RandomId: GetRandomId(),
-        Name: "Reykjavil",
+        Name: "Reykjavik",
         X: 95.5,
         Y: 124,
         Type: "City"
