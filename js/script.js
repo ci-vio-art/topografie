@@ -7,214 +7,269 @@ var incorrectCount = 0;
 var locations = [
     {
         RandomId: GetRandomId(),
-        Name: "Den Helder",
-        X: 324,
-        Y: 306,
+        Name: "Reykjavil",
+        X: 95.5,
+        Y: 124,
         Type: "City"
     },
     {
         RandomId: GetRandomId(),
-        Name: "Alkmaar",
-        X: 314,
-        Y: 549,
+        Name: "IJsland",
+        X: 140,
+        Y: 125,
+        Type: "Country"
+    },
+    {
+        RandomId: GetRandomId(),
+        Name: "Dublin",
+        X: 182,
+        Y: 481,
         Type: "City"
     },
     {
         RandomId: GetRandomId(),
-        Name: "Enkhuizen",
-        X: 562,
-        Y: 500,
+        Name: "Ierland",
+        X: 150,
+        Y: 475,
+        Type: "Country"
+    },
+    {
+        RandomId: GetRandomId(),
+        Name: "Londen",
+        X: 271,
+        Y: 556,
         Type: "City"
     },
     {
         RandomId: GetRandomId(),
-        Name: "Hoorn",
-        X: 456,
-        Y: 540,
+        Name: "Verenigd Koninkrijk",
+        X: 250,
+        Y: 510,
+        Type: "Country"
+    },
+    {
+        RandomId: GetRandomId(),
+        Name: "Amsterdam",
+        X: 359.1,
+        Y: 547.3,
         Type: "City"
     },
     {
         RandomId: GetRandomId(),
-        Name: "Purmerend",
-        X: 412,
+        Name: "Nederland",
+        X: 365,
+        Y: 554,
+        Type: "Country"
+    },
+    {
+        RandomId: GetRandomId(),
+        Name: "Brussel",
+        X: 343,
+        Y: 587,
+        Type: "City"
+    },
+    {
+        RandomId: GetRandomId(),
+        Name: "België",
+        X: 356,
+        Y: 598,
+        Type: "Country"
+    },
+    {
+        RandomId: GetRandomId(),
+        Name: "Luxemburg",
+        X: 373,
+        Y: 622.5,
+        Type: "City"
+    },
+    {
+        RandomId: GetRandomId(),
+        Name: "Luxemburg",
+        X: 400,
+        Y: 620,
+        Type: "Country"
+    },
+    {
+        RandomId: GetRandomId(),
+        Name: "Parijs",
+        X: 302.5,
         Y: 638,
         Type: "City"
     },
     {
         RandomId: GetRandomId(),
-        Name: "Volendam",
-        X: 460,
-        Y: 650,
+        Name: "Frankrijk",
+        X: 300,
+        Y: 700,
+        Type: "Country"
+    },
+    {
+        RandomId: GetRandomId(),
+        Name: "Bern",
+        X: 389,
+        Y: 702,
         Type: "City"
     },
     {
         RandomId: GetRandomId(),
-        Name: "Zaandam",
-        X: 346,
-        Y: 689,
+        Name: "Zwitserland",
+        X: 392,
+        Y: 715,
+        Type: "Country"
+    },
+    {
+        RandomId: GetRandomId(),
+        Name: "Madrid",
+        X: 153,
+        Y: 843,
         Type: "City"
     },
     {
         RandomId: GetRandomId(),
-        Name: "IJmuiden",
-        X: 245,
-        Y: 676,
-        Type: "City"
+        Name: "Spanje",
+        X: 134,
+        Y: 883,
+        Type: "Country"
     },
     {
         RandomId: GetRandomId(),
-        Name: "Zandvoort",
-        X: 213,
-        Y: 741,
-        Type: "City"
-    },
-    {
-        RandomId: GetRandomId(),
-        Name: "Haarlem",
-        X: 259,
-        Y: 733,
-        Type: "City",
-        Capital: true
-    },
-    {
-        RandomId: GetRandomId(),
-        Name: "Amsterdam",
-        X: 377.5,
-        Y: 741,
-        Type: "City"
-    },
-    {
-        RandomId: GetRandomId(),
-        Name: "Amstelveen",
-        X: 360,
-        Y: 791,
-        Type: "City"
-    },
-    {
-        RandomId: GetRandomId(),
-        Name: "Aalsmeer",
-        X: 317,
-        Y: 822,
-        Type: "City"
-    },
-    {
-        RandomId: GetRandomId(),
-        Name: "Bussum",
-        X: 503,
-        Y: 816,
-        Type: "City"
-    },
-    {
-        RandomId: GetRandomId(),
-        Name: "Hilversum",
-        X: 505,
+        Name: "Lissabon",
+        X: 30,
         Y: 855,
         Type: "City"
     },
     {
         RandomId: GetRandomId(),
-        Name: "Texel",
-        X: 350,
-        Y: 213,
-        Type: "Area"
+        Name: "Portugal",
+        X: 60,
+        Y: 822,
+        Type: "Country"
     },
     {
         RandomId: GetRandomId(),
-        Name: "Wieringermeer",
-        X: 435,
-        Y: 405,
-        Type: "Area"
+        Name: "Rome",
+        X: 488.5,
+        Y: 844,
+        Type: "City"
     },
     {
         RandomId: GetRandomId(),
-        Name: "Het Gooi",
-        X: 492,
-        Y: 835,
-        Type: "Area"
+        Name: "Italië",
+        X: 485,
+        Y: 815,
+        Type: "Country"
     },
     {
         RandomId: GetRandomId(),
-        Name: "Beemster",
-        X: 388,
-        Y: 605,
-        Type: "Area"
+        Name: "Wenen",
+        X: 559,
+        Y: 670.5,
+        Type: "City"
     },
     {
         RandomId: GetRandomId(),
-        Name: "IJmeer",
+        Name: "Oostenrijk",
+        X: 525,
+        Y: 686,
+        Type: "Country"
+    },
+    {
+        RandomId: GetRandomId(),
+        Name: "Praag",
+        X: 523.5,
+        Y: 619.5,
+        Type: "City"
+    },
+    {
+        RandomId: GetRandomId(),
+        Name: "Tsjechië",
+        X: 545,
+        Y: 630,
+        Type: "Country"
+    },
+    {
+        RandomId: GetRandomId(),
+        Name: "Berlijn",
+        X: 503.5,
+        Y: 552,
+        Type: "City"
+    },
+    {
+        RandomId: GetRandomId(),
+        Name: "Duitsland",
+        X: 440,
+        Y: 570,
+        Type: "Country"
+    },
+    {
+        RandomId: GetRandomId(),
+        Name: "Warschau",
+        X: 635,
+        Y: 555.5,
+        Type: "City"
+    },
+    {
+        RandomId: GetRandomId(),
+        Name: "Polen",
+        X: 590,
+        Y: 560,
+        Type: "Country"
+    },
+    {
+        RandomId: GetRandomId(),
+        Name: "Kopenhagen",
+        X: 489.5,
+        Y: 460.5,
+        Type: "City"
+    },
+    {
+        RandomId: GetRandomId(),
+        Name: "Denemarken",
+        X: 434,
+        Y: 448,
+        Type: "Country"
+    },    
+    {
+        RandomId: GetRandomId(),
+        Name: "Stockholm",
+        X: 572,
+        Y: 357,
+        Type: "City"
+    },
+    {
+        RandomId: GetRandomId(),
+        Name: "Zweden",
+        X: 525,
+        Y: 280,
+        Type: "Country"
+    },
+    {
+        RandomId: GetRandomId(),
+        Name: "Oslo",
+        X: 464.5,
+        Y: 341,
+        Type: "City"
+    },
+    {
+        RandomId: GetRandomId(),
+        Name: "Noorwegen",
         X: 450,
-        Y: 738,
-        Type: "Water"
+        Y: 285,
+        Type: "Country"
     },
     {
         RandomId: GetRandomId(),
-        Name: "Noordhollands kanaal",
-        X: 300,
-        Y: 458,
-        Type: "Water"
+        Name: "Helsinki",
+        X: 663.5,
+        Y: 322,
+        Type: "City"
     },
     {
         RandomId: GetRandomId(),
-        Name: "Loosdrechtse Plassen",
-        X: 454,
-        Y: 870,
-        Type: "Water"
-    },
-    {
-        RandomId: GetRandomId(),
-        Name: "Haarlemmermeer",
-        X: 290,
-        Y: 790,
-        Type: "Water"
-    },
-    {
-        RandomId: GetRandomId(),
-        Name: "Friesland",
-        X: 640,
-        Y: 264,
-        Type: "Province"
-    },
-    {
-        RandomId: GetRandomId(),
-        Name: "Flevoland",
-        X: 612,
-        Y: 740,
-        Type: "Province"
-    },
-    {
-        RandomId: GetRandomId(),
-        Name: "Utrecht",
-        X: 560,
-        Y: 862,
-        Type: "Province"
-    },
-    {
-        RandomId: GetRandomId(),
-        Name: "Zuid-Holland",
-        X: 230,
-        Y: 875,
-        Type: "Province"
-    },
-    {
-        RandomId: GetRandomId(),
-        Name: "Amsterdam-Rijnkanaal",
-        X: 420,
-        Y: 778,
-        Type: "River"
-    },
-    {
-        RandomId: GetRandomId(),
-        Name: "Noordzeekanaal",
-        X: 302,
-        Y: 700,
-        Type: "River"
-    },
-    {
-        RandomId: GetRandomId(),
-        Name: "Schiphol",
-        X: 319,
-        Y: 775,
-        Type: "Airport"
+        Name: "Finland",
+        X: 665,
+        Y: 170,
+        Type: "Country"
     }
 ]
 
@@ -453,6 +508,10 @@ function addLocation() {
                 break;
             case "airport":
                 node = '<a class="mark ' + onclickEvent + ' style="left:' + location.X + 'px; top:' + location.Y + 'px;  ' + onclickEvent + ' id="location-' + count + '" data-random-id="' + location.RandomId + '">🛧</a>';
+                break;
+            case "country":
+                node = '<svg class="mark triangle ' + onclickEvent + ' width="20" height="20" viewBox="0 0 20 20" style="left:' + location.X + 'px; top:' + location.Y +
+                    'px;"  ' + onclickEvent + ' ><polygon points="0,20 20,20 10,0" id="location-' + count + '" data-random-id="' + location.RandomId + '"/></svg>';
                 break;
         }
 

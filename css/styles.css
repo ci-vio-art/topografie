@@ -147,6 +147,7 @@ h2 {
     font-family: "Arial", sans-serif;
     font-style: italic;
     padding-left: 70px;
+    padding-top: 10px;
     width: 800px;
     color: black;
 }
@@ -165,7 +166,7 @@ h2 {
     position: relative;
     height: 1000px;
     width: 725px;
-    background-image: url(../img/topografie_noord_holland.jpg);
+    background-image: url(../img/topografie_europa.jpg);
     background-size: auto;
     border: solid;
     border-color: rgb(39, 23, 3);
