@@ -7,269 +7,185 @@ var incorrectCount = 0;
 var locations = [
     {
         RandomId: GetRandomId(),
-        Name: "Reykjavik",
-        X: 95.5,
-        Y: 124,
-        Type: "City"
-    },
-    {
-        RandomId: GetRandomId(),
-        Name: "IJsland",
-        X: 140,
-        Y: 125,
-        Type: "Country"
-    },
-    {
-        RandomId: GetRandomId(),
-        Name: "Dublin",
-        X: 182,
-        Y: 481,
-        Type: "City"
-    },
-    {
-        RandomId: GetRandomId(),
-        Name: "Ierland",
-        X: 150,
-        Y: 475,
-        Type: "Country"
-    },
-    {
-        RandomId: GetRandomId(),
-        Name: "Londen",
-        X: 271,
-        Y: 556,
-        Type: "City"
-    },
-    {
-        RandomId: GetRandomId(),
-        Name: "Verenigd Koninkrijk",
-        X: 250,
-        Y: 510,
-        Type: "Country"
-    },
-    {
-        RandomId: GetRandomId(),
-        Name: "Amsterdam",
-        X: 359.1,
-        Y: 547.3,
-        Type: "City"
-    },
-    {
-        RandomId: GetRandomId(),
-        Name: "Nederland",
-        X: 365,
-        Y: 554,
-        Type: "Country"
-    },
-    {
-        RandomId: GetRandomId(),
-        Name: "Brussel",
-        X: 343,
-        Y: 587,
-        Type: "City"
-    },
-    {
-        RandomId: GetRandomId(),
         Name: "België",
-        X: 356,
-        Y: 598,
-        Type: "Country"
-    },
-    {
-        RandomId: GetRandomId(),
-        Name: "Luxemburg",
-        X: 373,
-        Y: 622.5,
-        Type: "City"
-    },
-    {
-        RandomId: GetRandomId(),
-        Name: "Luxemburg",
-        X: 400,
-        Y: 620,
-        Type: "Country"
-    },
-    {
-        RandomId: GetRandomId(),
-        Name: "Parijs",
-        X: 302.5,
-        Y: 638,
-        Type: "City"
-    },
-    {
-        RandomId: GetRandomId(),
-        Name: "Frankrijk",
-        X: 300,
-        Y: 700,
-        Type: "Country"
-    },
-    {
-        RandomId: GetRandomId(),
-        Name: "Bern",
-        X: 389,
-        Y: 702,
-        Type: "City"
-    },
-    {
-        RandomId: GetRandomId(),
-        Name: "Zwitserland",
-        X: 392,
+        X: 335,
         Y: 715,
         Type: "Country"
     },
     {
         RandomId: GetRandomId(),
-        Name: "Madrid",
-        X: 153,
-        Y: 843,
-        Type: "City"
-    },
-    {
-        RandomId: GetRandomId(),
-        Name: "Spanje",
-        X: 134,
-        Y: 883,
+        Name: "Luxemburg",
+        X: 570,
+        Y: 900,
         Type: "Country"
     },
     {
         RandomId: GetRandomId(),
-        Name: "Lissabon",
-        X: 30,
-        Y: 855,
+        Name: "Amsterdam",
+        X: 385,
+        Y: 287.5,
         Type: "City"
     },
     {
         RandomId: GetRandomId(),
-        Name: "Portugal",
-        X: 60,
-        Y: 822,
-        Type: "Country"
-    },
-    {
-        RandomId: GetRandomId(),
-        Name: "Rome",
-        X: 488.5,
-        Y: 844,
+        Name: "Rotterdam",
+        X: 325,
+        Y: 395,
         Type: "City"
     },
     {
         RandomId: GetRandomId(),
-        Name: "Italië",
-        X: 485,
-        Y: 815,
-        Type: "Country"
-    },
-    {
-        RandomId: GetRandomId(),
-        Name: "Wenen",
-        X: 559,
-        Y: 670.5,
+        Name: "Oostende",
+        X: 82.5,
+        Y: 562,
         Type: "City"
     },
     {
         RandomId: GetRandomId(),
-        Name: "Oostenrijk",
-        X: 525,
-        Y: 686,
-        Type: "Country"
-    },
-    {
-        RandomId: GetRandomId(),
-        Name: "Praag",
-        X: 523.5,
-        Y: 619.5,
+        Name: "Brugge",
+        X: 130,
+        Y: 567,
         Type: "City"
-    },
-    {
-        RandomId: GetRandomId(),
-        Name: "Tsjechië",
-        X: 545,
-        Y: 630,
-        Type: "Country"
-    },
-    {
-        RandomId: GetRandomId(),
-        Name: "Berlijn",
-        X: 503.5,
-        Y: 552,
-        Type: "City"
-    },
-    {
-        RandomId: GetRandomId(),
-        Name: "Duitsland",
-        X: 440,
-        Y: 570,
-        Type: "Country"
-    },
-    {
-        RandomId: GetRandomId(),
-        Name: "Warschau",
-        X: 635,
-        Y: 555.5,
-        Type: "City"
-    },
-    {
-        RandomId: GetRandomId(),
-        Name: "Polen",
-        X: 590,
-        Y: 560,
-        Type: "Country"
-    },
-    {
-        RandomId: GetRandomId(),
-        Name: "Kopenhagen",
-        X: 489.5,
-        Y: 460.5,
-        Type: "City"
-    },
-    {
-        RandomId: GetRandomId(),
-        Name: "Denemarken",
-        X: 434,
-        Y: 448,
-        Type: "Country"
     },    
     {
         RandomId: GetRandomId(),
-        Name: "Stockholm",
-        X: 572,
-        Y: 357,
+        Name: "Gent",
+        X: 208.5,
+        Y: 606,
         Type: "City"
     },
     {
         RandomId: GetRandomId(),
-        Name: "Zweden",
-        X: 525,
-        Y: 280,
-        Type: "Country"
-    },
-    {
-        RandomId: GetRandomId(),
-        Name: "Oslo",
-        X: 464.5,
-        Y: 341,
+        Name: "Antwerpen",
+        X: 311,
+        Y: 567,
         Type: "City"
     },
     {
         RandomId: GetRandomId(),
-        Name: "Noorwegen",
-        X: 450,
-        Y: 285,
-        Type: "Country"
-    },
-    {
-        RandomId: GetRandomId(),
-        Name: "Helsinki",
-        X: 663.5,
-        Y: 322,
+        Name: "Mechelen",
+        X: 322.5,
+        Y: 611.5,
         Type: "City"
     },
     {
         RandomId: GetRandomId(),
-        Name: "Finland",
+        Name: "Brussel",
+        X: 302,
+        Y: 656.5,
+        Type: "City"
+    },
+    {
+        RandomId: GetRandomId(),
+        Name: "Leuven",
+        X: 356,
+        Y: 648,
+        Type: "City"
+    },
+    {
+        RandomId: GetRandomId(),
+        Name: "Hasselt",
+        X: 454,
+        Y: 636,
+        Type: "City"
+    },
+    {
+        RandomId: GetRandomId(),
+        Name: "Maastricht",
+        X: 507,
+        Y: 656.5,
+        Type: "City"
+    },
+    {
+        RandomId: GetRandomId(),
+        Name: "Bergen",
+        X: 238,
+        Y: 750,
+        Type: "City"
+    },
+    {
+        RandomId: GetRandomId(),
+        Name: "Charleroi",
+        X: 311,
+        Y: 761,
+        Type: "City"
+    },
+    {
+        RandomId: GetRandomId(),
+        Name: "Namen",
+        X: 381,
+        Y: 746.5,
+        Type: "City"
+    },
+    {
+        RandomId: GetRandomId(),
+        Name: "Luik",
+        X: 489,
+        Y: 708,
+        Type: "City"
+    },
+    {
+        RandomId: GetRandomId(),
+        Name: "Bastogne",
+        X: 516.5,
+        Y: 857.5,
+        Type: "City"
+    },
+    {
+        RandomId: GetRandomId(),
+        Name: "Luxemburg",
+        X: 582,
+        Y: 954,
+        Type: "City"
+    },
+    {
+        RandomId: GetRandomId(),
+        Name: "Noordzee",
+        X: 155,
+        Y: 230,
+        Type: "Water"
+    },
+    {
+        RandomId: GetRandomId(),
+        Name: "Rijn",
         X: 665,
-        Y: 170,
-        Type: "Country"
+        Y: 503,
+        Type: "River"
+    },
+    {
+        RandomId: GetRandomId(),
+        Name: "Schelde",
+        X: 257,
+        Y: 586,
+        Type: "River"
+    },
+    {
+        RandomId: GetRandomId(),
+        Name: "Maas",
+        X: 455,
+        Y: 735,
+        Type: "River"
+    },
+    {
+        RandomId: GetRandomId(),
+        Name: "Ardennen",
+        X: 470,
+        Y: 830,
+        Type: "Area"
+    },
+    {
+        RandomId: GetRandomId(),
+        Name: "Vlaanderen",
+        X: 370,
+        Y: 575,
+        Type: "Area"
+    },
+    {
+        RandomId: GetRandomId(),
+        Name: "Wallonië",
+        X: 420,
+        Y: 775,
+        Type: "Area"
     }
 ]
 
@@ -315,7 +231,7 @@ function checkInput(input) {
         let selectedItem = $(".selected");
         let currentLocation = locations.find(location => location.RandomId == selectedItem.attr("data-random-id"));
 
-        if (input.toLowerCase() == currentLocation.Name.toLowerCase()) {
+        if (input == currentLocation.Name) {
             showCorrect();
 
             if (incorrectCount > 0) {
