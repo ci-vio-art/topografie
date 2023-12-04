@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>Vondelschool - Topografie Europa</title>
+    <title>Vondelschool - Topografie België / Luxemburg</title>
     <link rel="icon" type="image/x-icon" href="img/favicon.ico">
     <link rel="stylesheet" href="css/styles.css" />
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -41,13 +41,13 @@
                 <p class="nice-text incorrect">Onjuist ☹️</p>
             </div>
             <div id="tip" class="box big">
-                <p class="nice-text">Tip: het lijkt erop dat je een spellingsfout hebt gemaakt.</p>
+                <p class="nice-text">Tip: het lijkt erop dat je een spellingsfout hebt gemaakt of een hoofdletter bent vergeten.</p>
             </div>
         </div>
         <div id="map" class="map">
             <div class="caption">
-                <p>▲ = Landen | • = Steden</p> 
-                <!-- | ■ = Wateren |  | ★ = Provincies | ⼮ = Rivieren/Kanalen | 🛧 = Vliegvelden -->
+                <p>▲ Landen | • Steden | ■ Wateren | ⼮ Rivieren/Kanalen | ▲ Gebieden</p> 
+                <!-- ▲ Landen | • Steden | ■ Wateren |  | ★ Provincies | ⼮ Rivieren/Kanalen | ▲ Gebieden | 🛧 Vliegvelden -->
             </div>
         </div>
     </div>
@@ -81,27 +81,34 @@
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" value="checkbox1" id="city" checked>
                             <label class="form-check-label" for="checkbox1">
-                                Steden
+                                Steden •
                             </label>
                         </div>
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" value="checkbox3" id="country" checked>
                             <label class="form-check-label" for="checkbox3">
-                                Landen
+                                Landen ▲
                             </label>
                         </div>
-                        <!-- <div class="form-check">
+                        <div class="form-check">
                             <input class="form-check-input" type="checkbox" value="checkbox4" id="water" checked>
                             <label class="form-check-label" for="checkbox4">
-                                Wateren
+                                Wateren ■
                             </label>
                         </div>
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" value="checkbox5" id="river" checked>
                             <label class="form-check-label" for="checkbox5">
-                                Rivieren / Kanalen
+                                Rivieren / Kanalen ⼮
                             </label>
                         </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="checkbox6" id="area" checked>
+                            <label class="form-check-label" for="checkbox6">
+                                Gebieden ▲
+                            </label>
+                        </div>
+                        <!--
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" value="checkbox6" id="province" checked>
                             <label class="form-check-label" for="checkbox6">
@@ -113,7 +120,8 @@
                             <label class="form-check-label" for="checkbox7">
                                 Vliegvelden
                             </label>
-                        </div> -->
+                        </div> 
+                        -->
                     </div>
                     <button class="btn btn-primary" onclick="setup()">START</button>
                 </div>
