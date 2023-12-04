@@ -415,7 +415,7 @@ function addLocation() {
                 node = '<svg class="mark triangle ' + onclickEvent + ' width="20" height="20" viewBox="0 0 20 20" style="left:' + location.X + 'px; top:' + location.Y +
                     'px;"  ' + onclickEvent + ' ><polygon points="0,20 20,20 10,0" id="location-' + count + '" data-random-id="' + location.RandomId + '"/></svg>';
                 break;
-            case "province":
+            case "country":
                 node = '<svg class="mark star ' + onclickEvent + ' width="120" height="120" viewBox="0 0 120 120" style="left:' + location.X + 'px; top:' + location.Y +
                     'px;"  ' + onclickEvent + ' ><polygon points="60,0 75,45 120,45 85,75 96,120 60,90 24,120 35,75 0,45 45,45" id="location-' + count + '" data-random-id="' + location.RandomId + '"/></svg>';
                 break;
@@ -425,7 +425,7 @@ function addLocation() {
             case "airport":
                 node = '<a class="mark ' + onclickEvent + ' style="left:' + location.X + 'px; top:' + location.Y + 'px;  ' + onclickEvent + ' id="location-' + count + '" data-random-id="' + location.RandomId + '">🛧</a>';
                 break;
-            case "country":
+            case "province":
                 node = '<svg class="mark triangle ' + onclickEvent + ' width="20" height="20" viewBox="0 0 20 20" style="left:' + location.X + 'px; top:' + location.Y +
                     'px;"  ' + onclickEvent + ' ><polygon points="0,20 20,20 10,0" id="location-' + count + '" data-random-id="' + location.RandomId + '"/></svg>';
                 break;
